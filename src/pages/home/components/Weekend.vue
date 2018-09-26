@@ -4,7 +4,7 @@
     <ul>
         <li 
             class="item border-bottom" 
-            v-for="item of recommendList" 
+            v-for="item of list" 
             :key="item.id"
         >
             <div class="item-img-wrapper">
@@ -22,40 +22,20 @@
 <script>
 export default {
     name: 'HomeWeekend',
-    data () {
-        return {
-            recommendList: [
-                {
-                    id:'001',
-                    imgUrl:'http://img1.qunarzz.com/sight/source/1505/fa/ca65fde9677de2.jpg_r_640x214_4500e3ff.jpg',
-                    title:'深圳必游TOP10',
-                    desc:'来到深圳，你需要来这里签到'
-                }, {
-                    id:'002',
-                    imgUrl:'http://img1.qunarzz.com/sight/source/1505/fa/ca65fde9677de2.jpg_r_640x214_4500e3ff.jpg',
-                    title:'上海杜莎夫人蜡像馆',
-                    desc:'上海杜莎夫人蜡像馆上海杜莎夫人蜡像馆'
-                }, {
-                    id:'003',
-                    imgUrl:'http://img1.qunarzz.com/sight/source/1505/fa/ca65fde9677de2.jpg_r_640x214_4500e3ff.jpg',
-                    title:'上海杜莎夫人蜡像馆',
-                    desc:'上海杜莎夫人蜡像馆上海杜莎夫人蜡像馆'
-                }
-            ]
-        }
+    props: {
+        list: Array
     }
 }    
 </script>
 <style lang="stylus" scoped>
     @import '~styles/mixins.styl';
     .recommend-title
-        margin-top .2rem
         line-height .8rem
         background #eee
         text-indent .2rem
     .item-img-wrapper
         overflow hidden
-        padding-bottom 33.9%
+        padding-bottom 37.09%
         height 0
         .item-img
            width 100%

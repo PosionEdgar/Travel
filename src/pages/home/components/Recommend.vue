@@ -2,58 +2,34 @@
 <div>
     <div class="recommend-title">热销推荐</div>
     <ul>
-        <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+        <li 
+            class="item border-bottom" 
+            v-for="item of listArr" 
+            :key="item.id"
+            v-if="showSwiper"
+        >
             <img class="item-img" :src="item.imgUrl">
             <div class="item-info">
                <p class="item-title">{{item.title}}</p>
                 <p class="item-desc">{{item.desc}}</p>
                 <button class="item-button">查看详情</button> 
             </div>
-            
         </li>
     </ul>
 </div>
 </template>
 <script>
 export default {
+    props: {
+        listArr: Array
+    },
     name: 'HomeRecommend',
-    data () {
-        return {
-            recommendList: [
-                {
-                    id:'001',
-                    imgUrl:'http://img1.qunarzz.com/sight/p0/1603/8b/8b12625615da783c90.water.jpg_200x200_e4e7cadb.jpg',
-                    title:'上海杜莎夫人蜡像馆',
-                    desc:'上海杜莎夫人蜡像馆上海杜莎夫人蜡像馆'
-                }, {
-                    id:'002',
-                    imgUrl:'http://img1.qunarzz.com/sight/p0/1603/8b/8b12625615da783c90.water.jpg_200x200_e4e7cadb.jpg',
-                    title:'上海杜莎夫人蜡像馆',
-                    desc:'上海杜莎夫人蜡像馆上海杜莎夫人蜡像馆'
-                }, {
-                    id:'003',
-                    imgUrl:'http://img1.qunarzz.com/sight/p0/1603/8b/8b12625615da783c90.water.jpg_200x200_e4e7cadb.jpg',
-                    title:'上海杜莎夫人蜡像馆',
-                    desc:'上海杜莎夫人蜡像馆上海杜莎夫人蜡像馆'
-                }, {
-                    id:'004',
-                    imgUrl:'http://img1.qunarzz.com/sight/p0/1603/8b/8b12625615da783c90.water.jpg_200x200_e4e7cadb.jpg',
-                    title:'上海杜莎夫人蜡像馆',
-                    desc:'上海杜莎夫人蜡像馆上海杜莎夫人蜡像馆'
-                }, {
-                    id:'005',
-                    imgUrl:'http://img1.qunarzz.com/sight/p0/1603/8b/8b12625615da783c90.water.jpg_200x200_e4e7cadb.jpg',
-                    title:'上海杜莎夫人蜡像馆',
-                    desc:'上海杜莎夫人蜡像馆上海杜莎夫人蜡像馆'
-                }, {
-                    id:'006',
-                    imgUrl:'http://img1.qunarzz.com/sight/p0/1603/8b/8b12625615da783c90.water.jpg_200x200_e4e7cadb.jpg',
-                    title:'上海杜莎夫人蜡像馆',
-                    desc:'上海杜莎夫人蜡像馆上海杜莎夫人蜡像馆'
-                }
-            ]
+    computed: {
+        showSwiper () {
+            return this.listArr.length
         }
     }
+    
 }    
 </script>
 <style lang="stylus" scoped>
