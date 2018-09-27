@@ -2,11 +2,12 @@
 <div>
     <div class="recommend-title">热销推荐</div>
     <ul>
-        <li 
+        <router-link 
             class="item border-bottom" 
             v-for="item of listArr" 
             :key="item.id"
-            v-if="showSwiper"
+            tag="li"
+            :to="'/detail/' + item.id"
         >
             <img class="item-img" :src="item.imgUrl">
             <div class="item-info">
@@ -14,7 +15,7 @@
                 <p class="item-desc">{{item.desc}}</p>
                 <button class="item-button">查看详情</button> 
             </div>
-        </li>
+        </router-link>
     </ul>
 </div>
 </template>
@@ -23,12 +24,7 @@ export default {
     props: {
         listArr: Array
     },
-    name: 'HomeRecommend',
-    computed: {
-        showSwiper () {
-            return this.listArr.length
-        }
-    }
+    name: 'HomeRecommend'
     
 }    
 </script>
