@@ -5,7 +5,7 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">北京</div>    
+                        <div class="button">{{this.currentCity}}</div>    
                     </div>
                 </div>
             </div>
@@ -15,6 +15,7 @@
                     <div class="button-wrapper" 
                          v-for="item of hot" 
                          :key="item.id"
+                         @click="handleCityClick(item.name)"
                     >
                         <div class="button">{{item.name}}</div>    
                     </div>
@@ -32,6 +33,7 @@
                         class="item border-bottom"
                         v-for="innerItem of item"
                         :key="innerItem.id"
+                        @click="handleCityClick(innerItem.name)"
                     >
                     {{innerItem.name}}
                     </div>
@@ -42,6 +44,7 @@
 </template>
 <script>
 import Bscroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
     props:{
         cities: Object,
@@ -49,8 +52,10 @@ export default {
         letter: String
     },
     name: 'CityList',
-    mounted () {
-        this.scroll = new Bscroll(this.$refs.wrapper)
+    computed: {
+        ...mapState({
+            currentCity: 'city'
+        })
     },
     watch: {
         letter () {
@@ -59,6 +64,16 @@ export default {
                 this.scroll.scrollToElement(element)
             }
         }
+    },
+    methods: {
+        handleCityClick (city) {
+            this.changeCity(city)
+            this.$router.push('/')
+        },
+        ...mapMutations(['changeCity'])
+    },
+    mounted () {
+        this.scroll = new Bscroll(this.$refs.wrapper)
     }
 }    
 </script>
