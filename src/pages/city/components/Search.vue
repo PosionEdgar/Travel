@@ -76,17 +76,20 @@ export default {
         handleCityClick (city) {
             this.changeCity(city)
             this.$router.push('/')
+            this.keyword = ''
         },
         ...mapMutations(['changeCity'])
     },
     mounted () {
-        this.scroll = new Bscroll(this.$refs.search)
+        this.scroll = new Bscroll(this.$refs.search, { click: true })
     }
 }    
 </script>
 <style lang="stylus" scoped>
     @import '~styles/varibles.styl'
     .search
+        position relative
+        z-index 99909
         height .72rem
         background $bgColor
         padding 0 .1rem

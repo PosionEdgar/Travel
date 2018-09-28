@@ -36,7 +36,7 @@ export default {
 	},
 	methods: {
 		handleScroll () {
-			const top = document.documentElement.scrollTop
+			const top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
 			if (top > 60){
 				let opacity = top / 140
 				opacity = opacity > 1 ? 1 : opacity
@@ -47,12 +47,12 @@ export default {
 			}
 		}
 	},
-	activated () {
-		window.addEventListener('scroll', this.handleScroll)
-	},
-	deactivated () {
-		window.removeEventListener('scroll', this.handleScroll)
-	}
+	mounted () {
+    	window.addEventListener('scroll', this.handleScroll)
+  	},
+    unmounted () {
+        window.removeEventListener('scroll', this.handleScroll)
+    }
 }	
 </script>
 
@@ -71,7 +71,7 @@ export default {
 			line-height .8rem
 			color #fff
 	.header-fixed
-		z-index 99
+		z-index 9999
 		position fixed
 		top 0
 		left 0
